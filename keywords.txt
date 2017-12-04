@@ -1,0 +1,24 @@
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+RGBWLed	KEYWORD1
+RGBW	KEYWORD1
+HSI	KEYWORD1
+Kelvin	KEYWORD1
+
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+setRGBW	KEYWORD2
+setHSI	KEYWORD2
+setKelvin	KEYWORD2
+fadeHSI	KEYWORD2
+fadeKelvin	KEYWORD2
+updateFade	KEYWORD2
+isFading	KEYWORD2
+setIntensity	KEYWORD2
+pauseFade	KEYWORD2
+resumeFade	KEYWORD2
