@@ -34,7 +34,7 @@ RGBWLed::RGBWLed(byte redPin, byte greenPin, byte bluePin, byte whitePin) {
 }
 
 void RGBWLed::setIntensity(byte value) {
-	globalIntensity = pgm_read_byte(&curve[value]);		// Dim curve correction
+	globalIntensity = pgm_read_byte(&curve[value]);		  // Dim curve correction
 }
 
 
@@ -106,9 +106,9 @@ void RGBWLed::setKelvin(Kelvin colour) {
 RGBW RGBWLed::HSItoRGBW(HSI colour) {
   RGBW res;
 
-  colour.h = fmod(colour.h, 360);					// [0..359] degrees
+  colour.h = fmod(colour.h, 360);					      // [0..359] degrees
   if (colour.h < 0) colour.h += 360;
-  colour.s = constrain(colour.s, 0, 1);			// [0..1]
+  colour.s = constrain(colour.s, 0, 1);			    // [0..1]
   colour.i = pgm_read_byte(&curve[colour.i]);		// Dim curve correction
 
   float red;
@@ -234,7 +234,7 @@ HSI RGBWLed::RGBWtoHSI(RGBW colour){
     else hue = 360 - radToDeg( acos(aux) );
   }
   
-  in = 255*pow( 3*in/255 , 1.0/2.8 ) +0.5;				// Inverse dim curve correction
+  in = 255*pow( 3*in/255 , 1.0/2.8 ) +0.5;	   // Inverse dim curve correction
   in = fmin(in,255);
   res = { hue , sat , (byte)in };
   return res;
@@ -245,7 +245,7 @@ HSI RGBWLed::RGBWtoHSI(RGBW colour){
 void RGBWLed::fadeHSI(HSI initcolour, HSI endcolour, unsigned int duration_s, unsigned int steps) {
   fadingHSI = true;
   fadingKelvin = false;
-  period = (unsigned long)duration_s * 1000 / steps;		// Interval in milliseconds
+  period = (unsigned long)duration_s * 1000 / steps;  // Interval in milliseconds
   tlast = millis();
   step = steps;
 
@@ -263,7 +263,7 @@ void RGBWLed::fadeHSI(HSI initcolour, HSI endcolour, unsigned int duration_s, un
 void RGBWLed::fadeKelvin(Kelvin initcolour, Kelvin endcolour, unsigned int duration_s, unsigned int steps) {
   fadingHSI = false;
   fadingKelvin = true;
-  period = (unsigned long)duration_s * 1000 / steps;		// Interval in milliseconds
+  period = (unsigned long)duration_s * 1000 / steps;  // Interval in milliseconds
   tlast = millis();
   step = steps;
   
@@ -278,15 +278,15 @@ void RGBWLed::fadeKelvin(Kelvin initcolour, Kelvin endcolour, unsigned int durat
 // Update fade process
 void RGBWLed::updateFade(void) {
   if ( isFading() ) {
-    if ( step ) {									// Still fading?
+    if ( step ) {						// Still fading?
       unsigned long tnow = millis();
-      if ( ( tnow - tlast) >= period ) {			// Next step?
+      if ( ( tnow - tlast) >= period ) {		// Next step?
         tlast += period;
         intensity += aux3;
 		
-        if ( fadingHSI )							// HSI fading
+        if ( fadingHSI )			// HSI fading
           colourH = { colourH.h + aux1 , colourH.s + aux2 , (byte)intensity };
-        else	  									// Kelvin fading
+        else	  							// Kelvin fading
           colourK = { colourK.t + aux1 , (byte)intensity };
         
         step--;											// 1 less step to go!
