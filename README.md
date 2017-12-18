@@ -3,6 +3,7 @@
 Arduino library for interfacing with RGB+W leds. Implements [HSI colorspace](https://en.wikipedia.org/wiki/HSL_and_HSV#From_HSI) and [Color temperature](https://en.wikipedia.org/wiki/Color_temperature) besides raw RGBW manipulation. Allows smooth **non blocking** fading between colors in all colorspaces. Corrects for non-linear brightness when using PWM.
 
 Fading interpolation in Color temperature between two kelvin values results in natural colors, perfect for representing sunrise and sunset effects.
+
 ![Color temperature scale](http://cdn3.craftsy.com/blog/wp-content/uploads/2014/08/color-temp.jpg "Color temperature scale")
 
 
