@@ -64,8 +64,8 @@ void resumeFade(void);
 
 ## Credits
 
-* HSI conversions
-Thanks to **Brian Neltner** from [saikoled.com](http://blog.saikoled.com/post/44677718712/how-to-convert-from-hsi-to-rgb-white)
+* HSI conversions:
+  Thanks to **Brian Neltner** from [saikoled.com](http://blog.saikoled.com/post/44677718712/how-to-convert-from-hsi-to-rgb-white)
 
-* Kelvin conversions
-Thanks to **Tanner Helland** from [tannerhelland.com](http://www.tannerhelland.com/4435/convert-temperature-rgb-algorithm-code/)
+* Kelvin conversions:
+  Thanks to **Tanner Helland** from [tannerhelland.com](http://www.tannerhelland.com/4435/convert-temperature-rgb-algorithm-code/)
